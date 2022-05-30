@@ -27,7 +27,7 @@ public class DoctorRepositoryImpl implements DoctorRepository {
 	@Override
 	public List<Doctor> getDoctors(String email) {
 		TypedQuery<Doctor> query = entityManager.createQuery("select d from Doctor d", Doctor.class);
-		if (email != null & !(email.isBlank())) {
+		if (email != null && !email.isEmpty()) {
 			query = entityManager.createQuery("select d from Doctor d where d.emailAddress = :email", Doctor.class);
 			query.setParameter("email", email);
 		}
