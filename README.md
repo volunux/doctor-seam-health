@@ -3,11 +3,11 @@
 ## An API that manages Doctors details and their address
 
 #### List of API Route and Definition
-** NOTE: ** All Request should have an Accepts and Content-Type header with the value application/json
+**NOTE:** All Request should have an Accepts and Content-Type header with the value application/json
 
-Api Url is ** (Seam Health Consult)[https://obscure-springs-41531.herokuapp.com/] **
+Api Url is **(Seam Health Consult)[https://obscure-springs-41531.herokuapp.com/]**
 
-** _ {id} _ is a placeholder or variable that should be replace with an Long value during request **
+**_{id}_ is a placeholder or variable that should be replace with an Long value during request**
 
 | Route                   | Http Method    | Description            | Sample Body                           | Options      |
 | ----------------------- | -------------- | ---------------------- | ------------------------------------- | -----------  |
