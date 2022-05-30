@@ -1,18 +1,17 @@
 package com.seamhealth.model.hateos;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 
 import com.seamhealth.controller.DoctorController;
 import com.seamhealth.entity.Doctor;
 
 public class DoctorEntityModelAssembler extends RepresentationModelAssemblerSupport<Doctor, DoctorEntityModel> {
-	
-	private Link link;
 	
 	public DoctorEntityModelAssembler() {
 		super(DoctorController.class, DoctorEntityModel.class);
@@ -27,9 +26,7 @@ public class DoctorEntityModelAssembler extends RepresentationModelAssemblerSupp
 	public DoctorEntityModel toModel(Doctor entity) {
 		DoctorEntityModel doctorEntityModel = createModelWithId(entity.getId(), entity);
 		doctorEntityModel.removeLinks();
-		if (link != null) {
-			doctorEntityModel.add(link);
-		}
+		doctorEntityModel.add(linkTo(methodOn(DoctorController.class).findDoctor(entity.getId())).withSelfRel());
 		return doctorEntityModel;
 	}
 	
@@ -39,14 +36,4 @@ public class DoctorEntityModelAssembler extends RepresentationModelAssemblerSupp
 		.collect(Collectors.toList());
 	}
 	
-	@Override
-	public CollectionModel<DoctorEntityModel> toCollectionModel(Iterable<? extends Doctor> entities) {
-		// TODO Auto-generated method stub
-		return super.toCollectionModel(entities);
-	}
-	
-	public DoctorEntityModelAssembler setLink(Link link) {
-		this.link = link;
-		return this;
-	}
 }

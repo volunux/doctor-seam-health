@@ -1,5 +1,8 @@
 package com.seamhealth.controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,9 +10,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.Link;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,9 +46,6 @@ public class DoctorController {
 		List<DoctorEntityModel> doctorResources = new DoctorEntityModelAssembler()
 				.toModels(doctors);
 		CollectionModel<DoctorEntityModel> doctorEntries = CollectionModel.of(doctorResources);
-		doctorEntries.forEach((doctorModel) -> {
-			doctorModel.add(linkTo(methodOn(DoctorController.class).findDoctor(doctorModel.getId())).withSelfRel());
-		});
 		doctorEntries.add(linkTo(methodOn(DoctorController.class).doctors(email)).withRel("entries"));
 		return doctorEntries;
 	}
@@ -58,7 +55,6 @@ public class DoctorController {
 		Doctor doctor = this.doctorService.getDoctor(id);
 		if (doctor != null) {
 			DoctorEntityModel doctorEntityModel = new DoctorEntityModelAssembler().toModel(doctor);
-			doctorEntityModel.add(linkTo(methodOn(DoctorController.class).findDoctor(id)).withSelfRel());
 			doctorEntityModel.add(linkTo(methodOn(DoctorController.class).doctors("email")).withRel("entries"));
 			return doctorEntityModel;
 		}
