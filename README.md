@@ -1,4 +1,4 @@
-#Doctor Seam Health
+##Doctor Seam Health
 
 ## An API that manages Doctors details and their address
 
@@ -10,7 +10,7 @@ Api Url is **(Seam Health Consult)[https://obscure-springs-41531.herokuapp.com/]
 **_{id}_ is a placeholder or variable that should be replace with an Long value during request**
 
 | Route                   | Http Method    | Description            | Sample Body                           | Options      |
-| ----------------------- | -------------- | ---------------------- | ------------------------------------- | -----------  |
+	| ----------------------- | -------------- | ---------------------- | ------------------------------------- | -----------  |
 | /      				  | GET            | API Entry              |                                       | ?email=value |
 | api/doctor/entries      | GET            | Retrieve all records   |                                       | ?email=value |
 | api/doctor/detail/{id}  | GET            | Retrieve single record |                                       |              |
@@ -21,5 +21,5 @@ Api Url is **(Seam Health Consult)[https://obscure-springs-41531.herokuapp.com/]
 
 **Alternatives**
 
-For data access - spring jdbc, spring data jpa implementing CrudRepository or JpaRepository
+For data access - spring jdbc, spring data jpa implementing CrudRepository or JpaRepository <br/>
 For data update - @DynamicUpdate or @Query @Modifying
