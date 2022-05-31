@@ -1,4 +1,4 @@
-##Doctor Seam Health
+**Doctor Seam Health*
 
 ## An API that manages Doctors details and their address
 
@@ -10,8 +10,8 @@ Api Url is **(Seam Health Consult)[https://obscure-springs-41531.herokuapp.com/]
 **_{id}_ is a placeholder or variable that should be replace with an Long value during request**
 
 | Route                   | Http Method    | Description            | Sample Body                           | Options      |
-	| ----------------------- | -------------- | ---------------------- | ------------------------------------- | -----------  |
-| /      				  | GET            | API Entry              |                                       | ?email=value |
+| ----------------------- | -------------- | ---------------------- | ------------------------------------- | -----------  |
+| /      				  | GET            | API Entry              |                                       |  			   |
 | api/doctor/entries      | GET            | Retrieve all records   |                                       | ?email=value |
 | api/doctor/detail/{id}  | GET            | Retrieve single record |                                       |              |
 | api/doctor/remove/{id}  | GET            | Remove record          |                                       |              |
@@ -19,7 +19,8 @@ Api Url is **(Seam Health Consult)[https://obscure-springs-41531.herokuapp.com/]
 | api/doctor/update/{id}  | POST           | Update a record        | { "firstName": "Mayegun", <br/> "lastName": "Ademulegun", <br/> "emailAddress": "adetokunbo@gmail.com", <br/> "address": "Ademola Adetokunbo Street, Abuja", <br/> "lga": "FCT", <br/> "phoneNumber": "+2349022035587", <br/> "state": "Ogun State" <br/> } <br/> | |
 
 
-**Alternatives**
+**Alternatives and Recommendations**
 
+Could use Spring Vault to hide environmental and application properties <br/>
 For data access - spring jdbc, spring data jpa implementing CrudRepository or JpaRepository <br/>
 For data update - @DynamicUpdate or @Query @Modifying
