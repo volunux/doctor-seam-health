@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.seamhealth.entity.Address;
 import com.seamhealth.entity.Doctor;
+import com.seamhealth.exception.entity.DoctorNotFoundException;
 import com.seamhealth.model.DoctorDto;
 import com.seamhealth.model.DoctorUpdateDto;
 import com.seamhealth.repository.DoctorRepository;
@@ -44,7 +45,13 @@ public class DoctorServiceImpl implements DoctorService {
 	
 	@Override
 	public Doctor getDoctor(Long id) {
-		return doctorRepository.getDoctor(id);
+		Doctor doctor = doctorRepository.getDoctor(id);
+		if (doctor != null) {
+			return doctor;
+		}
+		else {
+			throw new DoctorNotFoundException(id);
+		}
 	}
 	
 	@Override
@@ -55,7 +62,13 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	@Transactional
 	public boolean removeDoctor(Long id) {
-		return doctorRepository.removeDoctor(id);
+		boolean removed = doctorRepository.removeDoctor(id);
+		if (removed) {
+			return removed;
+		}
+		else {
+			throw new DoctorNotFoundException(id);
+		}
 	}
 	
 	@Override
@@ -63,7 +76,7 @@ public class DoctorServiceImpl implements DoctorService {
 	public Doctor updateDoctor(Long id, DoctorUpdateDto doctorUpdateDto) {
 		Doctor existingDoctor = doctorRepository.getDoctor(id);
 		if (existingDoctor == null) {
-			return existingDoctor;
+			throw new DoctorNotFoundException(id);
 		}
 
 		Doctor doctor = new Doctor();

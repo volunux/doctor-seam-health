@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -52,12 +53,12 @@ public class DoctorRepositoryImpl implements DoctorRepository {
 	
 	@Override
 	public boolean removeDoctor(Long id) {
-		Doctor doctor = entityManager.getReference(Doctor.class, id);
-		if (doctor != null) {
+		try {
+			Doctor doctor = entityManager.getReference(Doctor.class, id);
 			entityManager.remove(doctor);
 			return true;
 		}
-		else {
+		catch (EntityNotFoundException ex) {
 			return false;
 		}
 	}

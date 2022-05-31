@@ -53,6 +53,6 @@ public class DoctorEntityModel extends RepresentationModel<DoctorEntityModel> {
 	@Override
 	public String toString() {
 		return "DoctorEntityModel [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailAddress="
-				+ emailAddress + ", phoneNumber=" + phoneNumber + ", address=" + /* address + */"]";
+				+ emailAddress + ", phoneNumber=" + phoneNumber + ", address=" + address + "]";
 	}
 }

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -22,8 +23,9 @@ public class Address implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@JsonIgnore
 	@JsonIgnoreProperties("address")
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "doctor_id", referencedColumnName = "id")
 	private Doctor doctor;
 	
@@ -79,11 +81,6 @@ public class Address implements Serializable {
 
 	public void setState(String state) {
 		this.state = state;
-	}
-
-	@Override
-	public String toString() {
-		return "Address [homeAddress=" + homeAddress + ", lga=" + lga + ", state=" + state + "]";
 	}
 	
 }

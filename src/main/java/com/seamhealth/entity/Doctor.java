@@ -97,10 +97,5 @@ public class Doctor implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	@Override
-	public String toString() {
-		return "Doctor [firstName=" + firstName + ", lastName=" + lastName + ", emailAddress=" + emailAddress
-				+ ", phoneNumber=" + phoneNumber + "]";
-	}
 	
 }

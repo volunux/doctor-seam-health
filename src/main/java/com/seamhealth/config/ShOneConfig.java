@@ -74,7 +74,6 @@ public class ShOneConfig {
 		ModelMapper mapper = new ModelMapper();
 		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 		return mapper;
-		
 	}
 	
 }
